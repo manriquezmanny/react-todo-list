@@ -4,7 +4,7 @@ function Task(props) {
             <h3>{props.number}.</h3>
             <form className="task-form">
                 {props.edit ? 
-                <label>Edit: <input type="text" className="edit-input" id="edit-input"/></label>
+                <label>Edit: <input type="text" className="edit-input" id="edit-input" autoFocus/></label>
                 :
                 <p className="objective-text">{props.objective}</p>
                 }
