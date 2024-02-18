@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { v4 as uuidv4 } from "uuid"
 import './App.css'
 import Header from "./Header"
@@ -19,52 +19,46 @@ function App() {
   // Handler function for editing a task in state.
   function handleEdit(id) {
     setTasks((prevTasks) => prevTasks.map((current) => {
-      return current.id === id ? {...current, edit: true}: current
+      return current.id === id ? { ...current, edit: true }: current
     }))
   }
 
 
   // Handler function for saving an edited task in state.
-  function handleSave(id){
+  const handleSave = (editedObject) => {
     setTasks((prevTasks) => prevTasks.map((current) => {
-      return current.id === id ? 
-             {...current, objective: document.getElementById("edit-input").value, edit: false}
+      return current.id === editedObject.id ? 
+             { ...current, objective: editedObject.objective, edit: false }
              : current
     }))
   }
 
 
   // Handler function for adding a new task to state.
-  function handleAddTask(event){
-    event.preventDefault()
-    const addTaskInput = document.getElementById("objective")
-    const newObjective = addTaskInput.value
-    if (newObjective === "" ) {
+  const handleAddTask = (task) => {
+    if (task === "" ) {
       alert("Please write a task.")
       return
     }
     const newId = uuidv4()
-    const newTaskObject = {id: newId, objective: newObjective, edit: false}
+    const newTaskObject = {id: newId, objective: task, edit: false}
     
     setTasks([...tasks, newTaskObject])
-    addTaskInput.value = ""
-    addTaskInput.focus()
   }
 
 
   return (
     <div className="list-container">
-      <Header handleAddTask={handleAddTask}/>
+      <Header onSubmit={handleAddTask}/>
+
       <div className="list-body">
         {tasks.map((taskObj, index) => {
           return <Task key={taskObj.id}
-                       id={taskObj.id}
                        number={index + 1}
-                       objective={taskObj.objective}
-                       edit={taskObj.edit}
+                       taskObj={taskObj}
                        handleDelete={()=>deleteTask(taskObj.id)}
                        handleEdit={()=>handleEdit(taskObj.id)}
-                       handleSave={()=>handleSave(taskObj.id)}
+                       onSubmit={handleSave}
                   />
         })}
       </div>

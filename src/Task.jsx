@@ -1,23 +1,42 @@
+import { useState, useRef } from 'react'
+
 function Task(props) {
+
+    const [ toEdit, setToEdit ] = useState(props.taskObj)
+    const editInputElement = useRef(null)
+
+    const handleChange = (e) => {
+        const editInputValue = e.target.value
+        setToEdit((prev) => {
+            return { ...prev, objective: editInputValue }
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        props.onSubmit(toEdit)
+        editInputElement.current.value = ""
+    }
+
     return(
         <div className="task">
             <h3>{props.number}.</h3>
-            <form className="task-form">
-                {props.edit ? 
-                <label>Edit: <input type="text" className="edit-input" id="edit-input" defaultValue={props.objective} autoFocus/></label>
+            <form id="edit-form" className="task-form" onSubmit={handleSubmit}>
+                {props.taskObj.edit ? 
+                <label>Edit: <input ref={editInputElement} onChange={handleChange} type="text" className="edit-input" defaultValue={props.taskObj.objective} id="edit-input" autoFocus/></label>
                 :
-                <p className="objective-text">{props.objective}</p>
+                <p className="objective-text">{props.taskObj.objective}</p>
                 }
                 <div>
-                    {props.edit ?
+                    {props.taskObj.edit ?
                         <div className="task-btns">
-                            <div><button className="save-btn" onClick={props.handleSave}>Save <i class="bi bi-check2"></i></button></div>
-                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i class="bi bi-trash"></i></button>
+                            <div><button className="save-btn">Save <i className="bi bi-check2"></i></button></div>
+                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i className="bi bi-trash"></i></button>
                         </div>
                         :
                         <div className="task-btns">
-                            <button type="button" className="edit-btn" onClick={props.handleEdit}>Edit <i class="bi bi-pencil"></i></button>
-                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i class="bi bi-trash"></i></button>
+                            <button type="button" className="edit-btn" onClick={props.handleEdit}>Edit <i className="bi bi-pencil"></i></button>
+                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i className="bi bi-trash"></i></button>
                         </div>
                     }
                 </div>
