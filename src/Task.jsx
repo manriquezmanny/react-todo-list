@@ -25,7 +25,7 @@ function Task(props) {
                 {props.taskObj.edit ? 
                 <label>Edit: <input ref={editInputElement} onChange={handleChange} type="text" className="edit-input" defaultValue={props.taskObj.objective} id="edit-input" autoFocus/></label>
                 :
-                <p className="objective-text">{props.taskObj.objective}</p>
+                <button type="button" style={{ textDecoration: props.taskObj.complete ? "line-through": "none" }} className="objective-text" onClick={props.toggleComplete}>{props.taskObj.objective}</button>
                 }
                 <div>
                     {props.taskObj.edit ?
