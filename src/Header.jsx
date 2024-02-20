@@ -18,7 +18,7 @@ function Header(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} id="header-form">
+            <form onSubmit={handleSubmit} className="header-form">
                 <h2 id="main-header">TO DO LIST</h2>
                 <div className="header-right">
                     <label className="input-label">To Do:

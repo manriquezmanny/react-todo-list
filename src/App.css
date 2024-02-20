@@ -7,13 +7,15 @@
   height: 100%;
   width: 100%;
   min-width: 1050px;
+  overflow-y: scroll;
 }
 
 
 .sidebar {
   width: 250px;
-  height: 100%;
-  position:absolute;
+  height: 100vh;
+  position:fixed;
+  z-index: -1;
   top: 0;
   left: 0;
   bottom:0;
@@ -22,7 +24,7 @@
 }
 
 
-#header-form{
+.header-form{
   height: 80px;
   width: calc(100% - 250px);
   font-family: "Indie Flower";
@@ -41,7 +43,7 @@
   align-items: center;
   padding-right: 3.5%;
   font-size: 1.4rem;
-  width: 535px;
+  width: 550px;
 }
 .input-label{
   margin-right: 10px;
@@ -75,7 +77,8 @@
 
 
 .task {
-  width: 100%;
+  float: right;
+  width: calc(100% - 250px);
   height: 60px;
   display: flex;
   align-items: center;
@@ -96,8 +99,7 @@
 }
 .task-btns {
   min-width: 30px;
-  display: flex;
-  justify-content: end;
+  margin-right: 20px
 }
 .edit-btn{
   color: blue;
@@ -117,9 +119,8 @@
 .save-btn{
   color: green;
   font-weight:bold;
-  font-family: "Segoe UI";
   margin-right: 5px;
-  font-size:1.3rem;
+  font-size:1.4rem;
   border-radius: 3px;
 }
 .edit-input{

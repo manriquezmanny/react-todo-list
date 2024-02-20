@@ -9,7 +9,7 @@ function App() {
   // State for tasks.
   const [tasks, setTasks] = useState([])
 
-  console.log(tasks)
+  const sidebar = useRef(null)
 
   
   // Handler function for deleting a task from state.
@@ -50,7 +50,6 @@ function App() {
 
 
   const toggleComplete = (id) => {
-    console.log("toggle function ran")
     setTasks((prevTasks) => prevTasks.map((current) => {
       return current.id === id ?
         { ...current, complete: !current.complete }
@@ -62,12 +61,9 @@ function App() {
   return (
     <div className="main-container">
 
-      <div className="sidebar">
-        
+      <div className="sidebar" ref={sidebar}>
       </div>
       <Header onSubmit={handleAddTask}/>
-
-      <div className="list-body">
         {tasks.map((taskObj, index) => {
           return <Task key={taskObj.id}
                        number={index + 1}
@@ -78,7 +74,6 @@ function App() {
                        onSubmit={handleSave}
                   />
         })}
-      </div>
     </div>
   )
 }
