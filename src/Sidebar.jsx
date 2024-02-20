@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react"
 
 function Sidebar(props) {
 
-    const [ sidebarToggled, setSidebarToggled ] = useState(props.sidebarToggled)
+    const [toggleState, setToggleState] = useState(props.toggleState)
 
-    function toggleSidebar() {
-        setSidebarToggled(!sidebarToggled)
-        props.sendToggleState(sidebarToggled)
+    function toggleSideBar() {
+        setToggleState(!toggleState)
     }
 
+    useEffect(() => {
+        props.sendToggleState(toggleState)
+    }, [toggleState])
+
     return (
-        
-        <>
-            <div className={ sidebarToggled ? "sidebar active": "sidebar" }>
-                <button className="sidebar-btn" onClick={toggleSidebar}><i className='bx bx-menu bx-lg' ></i></button>
-            </div>
-        </>
+        <div className={toggleState ? "sidebar active" : "sidebar"}>
+            <button onClick={toggleSideBar}>Toggle</button>
+        </div>
     )
 }
 

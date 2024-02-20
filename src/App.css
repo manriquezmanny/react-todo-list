@@ -10,7 +10,8 @@
   overflow-y: scroll;
 }
 
-.sidebar{
+
+.sidebar {
   width: 60px;
   height: 100vh;
   position:fixed;
@@ -20,7 +21,7 @@
   right: 0;
   background-color: lightgray;
 }
-.sidebar.active{
+.sidebar.active {
   width: 250px;
   height: 100vh;
   position:fixed;
@@ -32,20 +33,29 @@
 }
 
 
+
 .header-form{
-  height: 58px;
+  height: 80px;
   width: calc(100% - 60px);
   font-family: "Indie Flower";
   float: right;
   display: flex;
-  flex: 1;
   justify-content: space-between;
   align-items: center;
   border-bottom: solid black 2px;
 }
-
+.header-form.active{
+  height: 80px;
+  width: calc(100% - 250px);
+  font-family: "Indie Flower";
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid black 2px;
+}
 #main-header{
-  font-size: 2.3rem;
+  font-size: 2rem;
   padding-left: 35px;
 }
 .header-right{
@@ -53,7 +63,7 @@
   align-items: center;
   padding-right: 3.5%;
   font-size: 1.4rem;
-  width: 450px;
+  width: 550px;
 }
 .input-label{
   margin-right: 10px;
@@ -85,6 +95,7 @@
   display: none;
 }
 
+
 .task {
   float: right;
   width: calc(100% - 60px);
@@ -95,6 +106,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   justify-content: space-evenly;
+  margin-top: 5px;
   border-bottom: solid black 1px;
 }
 .task.active {
@@ -107,6 +119,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   justify-content: space-evenly;
+  margin-top: 5px;
   border-bottom: solid black 1px;
 }
 .task-form {
@@ -119,7 +132,7 @@
 }
 .task-btns {
   min-width: 30px;
-  margin-right: 45px
+  margin-right: 20px
 }
 .edit-btn{
   color: blue;
@@ -172,24 +185,6 @@
 .objective-text::-webkit-scrollbar {
   display: none;
 }
-
-
-.sidebar-btn{
-  height: 60px;
-  width: 100%;
-}
-.sidebar-btn.active{
-  font-family: "Indie Flower";
-  font-weight: bold;
-  font-size: 1.4rem;
-  height:60px;
-  width: 100%;
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-
-.objective-text, button {
+.objective-text, .add-task-btn, .edit-btn, .save-btn, .delete-btn:hover {
   cursor: pointer;
 }

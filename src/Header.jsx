@@ -3,6 +3,7 @@ import { useState, useRef } from 'react'
 function Header(props) {
 
     const [task, setTask] = useState()
+
     const addInput = useRef(null);
 
     const handleChange = (e) => {
@@ -13,12 +14,13 @@ function Header(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.onSubmit(task)
+        setTask("")
         addInput.current.value = ""
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="header-form">
+            <form onSubmit={handleSubmit} className={ props.toggleState ? "header-form active": "header-form"}>
                 <h2 id="main-header">TO DO LIST</h2>
                 <div className="header-right">
                     <label className="input-label">To Do:

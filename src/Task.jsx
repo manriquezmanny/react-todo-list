@@ -19,7 +19,7 @@ function Task(props) {
     }
 
     return(
-        <div className="task">
+        <div className={props.toggleState ? "task active": "task"}>
             <h3>{props.number}.</h3>
             <form id="edit-form" className="task-form" onSubmit={handleSubmit}>
                 {props.taskObj.edit ? 

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { v4 as uuidv4 } from "uuid"
 import './App.css'
 import Header from "./Header"
@@ -9,10 +9,10 @@ function App() {
 
   // State for tasks.
   const [tasks, setTasks] = useState([])
-  // State to check if sidebar toggle is active or not.
-  const[sidebarToggled, setSidebarToggled] = useState(false)
+  // State for sidebarToggle.
+  const [sidebarToggled, setSidebarToggled] = useState(false)
 
-
+  
   // Handler function for deleting a task from state.
   function deleteTask(id) {
     setTasks((prevTasks) => prevTasks.filter((current) => current.id != id))
@@ -59,34 +59,27 @@ function App() {
   }
 
 
-  const getSidebarToggleState = (state) => {
+  const getToggleState = (state) => {
     setSidebarToggled(state)
   }
 
 
   return (
     <div className="main-container">
-      {console.log(sidebarToggled)}
-      <Sidebar sidebarToggled={sidebarToggled}
-               sendToggleState={getSidebarToggleState}        
-      />
 
-      <Header onSubmit={handleAddTask} 
-              sidebarToggled={sidebarToggled}/>
+      <Sidebar sendToggleState={getToggleState} toggleState={sidebarToggled}/>
 
+      <Header onSubmit={handleAddTask} toggleState={sidebarToggled}/>
         {tasks.map((taskObj, index) => {
-          return (
-            <Task 
-              key={taskObj.id}
-              number={index + 1}
-              taskObj={taskObj}
-              handleDelete={()=>deleteTask(taskObj.id)}
-              handleEdit={()=>handleEdit(taskObj.id)}
-              toggleComplete={()=>toggleComplete(taskObj.id)}
-              onSubmit={handleSave}
-              sidebarToggled={sidebarToggled}
-            />
-          )
+          return <Task key={taskObj.id}
+                       number={index + 1}
+                       taskObj={taskObj}
+                       handleDelete={()=>deleteTask(taskObj.id)}
+                       handleEdit={()=>handleEdit(taskObj.id)}
+                       toggleComplete={()=>toggleComplete(taskObj.id)}
+                       onSubmit={handleSave}
+                       toggleState={sidebarToggled}
+                  />
         })}
     </div>
   )
