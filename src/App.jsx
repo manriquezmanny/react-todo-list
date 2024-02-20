@@ -3,15 +3,16 @@ import { v4 as uuidv4 } from "uuid"
 import './App.css'
 import Header from "./Header"
 import Task from "./Task"
+import Sidebar from "./Sidebar"
 
 function App() {
 
   // State for tasks.
   const [tasks, setTasks] = useState([])
+  // State to check if sidebar toggle is active or not.
+  const[sidebarToggled, setSidebarToggled] = useState(false)
 
-  const sidebar = useRef(null)
 
-  
   // Handler function for deleting a task from state.
   function deleteTask(id) {
     setTasks((prevTasks) => prevTasks.filter((current) => current.id != id))
@@ -58,21 +59,34 @@ function App() {
   }
 
 
+  const getSidebarToggleState = (state) => {
+    setSidebarToggled(state)
+  }
+
+
   return (
     <div className="main-container">
+      {console.log(sidebarToggled)}
+      <Sidebar sidebarToggled={sidebarToggled}
+               sendToggleState={getSidebarToggleState}        
+      />
 
-      <div className="sidebar" ref={sidebar}>
-      </div>
-      <Header onSubmit={handleAddTask}/>
+      <Header onSubmit={handleAddTask} 
+              sidebarToggled={sidebarToggled}/>
+
         {tasks.map((taskObj, index) => {
-          return <Task key={taskObj.id}
-                       number={index + 1}
-                       taskObj={taskObj}
-                       handleDelete={()=>deleteTask(taskObj.id)}
-                       handleEdit={()=>handleEdit(taskObj.id)}
-                       toggleComplete={()=>toggleComplete(taskObj.id)}
-                       onSubmit={handleSave}
-                  />
+          return (
+            <Task 
+              key={taskObj.id}
+              number={index + 1}
+              taskObj={taskObj}
+              handleDelete={()=>deleteTask(taskObj.id)}
+              handleEdit={()=>handleEdit(taskObj.id)}
+              toggleComplete={()=>toggleComplete(taskObj.id)}
+              onSubmit={handleSave}
+              sidebarToggled={sidebarToggled}
+            />
+          )
         })}
     </div>
   )
