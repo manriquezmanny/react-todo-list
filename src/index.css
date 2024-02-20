@@ -1,9 +1,4 @@
-body {
+html, body, #app, #app>div {
+  height: 100%;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #f8f8f8;
 }

@@ -19,10 +19,10 @@ function Header(props) {
     return (
         <>
             <form onSubmit={handleSubmit} id="header-form">
-                <h2 id="main-header" style={{paddingTop:"20px"}}>TO DO LIST</h2>
+                <h2 id="main-header">TO DO LIST</h2>
                 <div className="header-right">
-                    <label>To Do:
-                        <input onChange={handleChange} ref={addInput} className="input-field" type="text" name="objective"/>
+                    <label className="input-label">To Do:
+                        <input id="input-field" onChange={handleChange} ref={addInput} type="text" name="objective"/>
                     </label>
                     <button className="add-task-btn">Add</button>
                 </div>

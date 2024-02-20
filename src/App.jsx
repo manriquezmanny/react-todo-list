@@ -26,7 +26,7 @@ function App() {
   }
 
 
-  // Handler function for saving an edited task in state.
+  // Handler callback function for saving an edited task in state. Edited task data passed up from child component.
   const handleSave = (editedObject) => {
     setTasks((prevTasks) => prevTasks.map((current) => {
       return current.id === editedObject.id ? 
@@ -36,7 +36,7 @@ function App() {
   }
 
 
-  // Handler function for adding a new task to state. Task recieved from child with onSubmit prop.
+  // Handler function for adding a new task to state. Task recieved from child component with onSubmit prop.
   const handleAddTask = (task) => {
     if (task === "" ) {
       alert("Please write a task.")
@@ -60,7 +60,11 @@ function App() {
 
 
   return (
-    <div className="list-container">
+    <div className="main-container">
+
+      <div className="sidebar">
+        
+      </div>
       <Header onSubmit={handleAddTask}/>
 
       <div className="list-body">

@@ -30,13 +30,13 @@ function Task(props) {
                 <div>
                     {props.taskObj.edit ?
                         <div className="task-btns">
-                            <div><button className="save-btn">Save <i className="bi bi-check2"></i></button></div>
-                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i className="bi bi-trash"></i></button>
+                            <div><button className="save-btn">Save</button></div>
+                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete</button>
                         </div>
                         :
                         <div className="task-btns">
-                            <button type="button" className="edit-btn" onClick={props.handleEdit}>Edit <i className="bi bi-pencil"></i></button>
-                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete <i className="bi bi-trash"></i></button>
+                            <button type="button" className="edit-btn" onClick={props.handleEdit}>Edit</button>
+                            <button type="button" className="delete-btn" onClick={props.handleDelete}>Delete</button>
                         </div>
                     }
                 </div>
