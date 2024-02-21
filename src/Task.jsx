@@ -1,9 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
 function Task(props) {
 
+    // State for tasks to edit.
     const [ toEdit, setToEdit ] = useState(props.taskObj)
-    const editInputElement = useRef(null)
 
     const handleChange = (e) => {
         const editInputValue = e.target.value
@@ -14,8 +14,11 @@ function Task(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const formData = new FormData(e.target)
+        props.onSubmit(formData.get("edit-input"))
+        setToEdit({ ...props.taskObj, objective: formData.get("edit-input")})
         props.onSubmit(toEdit)
-        editInputElement.current.value = ""
+        e.target.reset()
     }
 
     return(
@@ -23,7 +26,7 @@ function Task(props) {
             <h3>{props.number}.</h3>
             <form id="edit-form" className="task-form" onSubmit={handleSubmit}>
                 {props.taskObj.edit ? 
-                <label>Edit: <input ref={editInputElement} onChange={handleChange} type="text" className="edit-input" defaultValue={props.taskObj.objective} id="edit-input" autoFocus/></label>
+                <label>Edit: <input onChange={handleChange} type="text" className="edit-input" defaultValue={props.taskObj.objective} id="edit-input" autoFocus name="edit-input"/></label>
                 :
                 <button type="button" style={{ textDecoration: props.taskObj.complete ? "line-through": "none" }} className="objective-text" onClick={props.toggleComplete}>{props.taskObj.objective}</button>
                 }

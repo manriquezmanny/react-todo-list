@@ -71,15 +71,18 @@ function App() {
 
       <Header onSubmit={handleAddTask} toggleState={sidebarToggled}/>
         {tasks.map((taskObj, index) => {
-          return <Task key={taskObj.id}
-                       number={index + 1}
-                       taskObj={taskObj}
-                       handleDelete={()=>deleteTask(taskObj.id)}
-                       handleEdit={()=>handleEdit(taskObj.id)}
-                       toggleComplete={()=>toggleComplete(taskObj.id)}
-                       onSubmit={handleSave}
-                       toggleState={sidebarToggled}
-                  />
+          return (
+            <Task 
+              key={taskObj.id}
+              number={index + 1}
+              taskObj={taskObj}
+              handleDelete={()=>deleteTask(taskObj.id)}
+              handleEdit={()=>handleEdit(taskObj.id)}
+              toggleComplete={()=>toggleComplete(taskObj.id)}
+              onSubmit={handleSave}
+              toggleState={sidebarToggled}
+            />
+          )
         })}
     </div>
   )

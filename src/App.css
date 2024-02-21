@@ -9,6 +9,9 @@
   min-width: 1050px;
   overflow-y: scroll;
 }
+.main-container::-webkit-scrollbar {
+  display: none;
+}
 
 
 .sidebar {
@@ -23,19 +26,15 @@
 }
 .sidebar.active {
   width: 250px;
-  height: 100vh;
-  position:fixed;
-  top: 0;
-  left: 0;
-  bottom:0;
-  right: 0;
-  background-color: lightgray;
 }
 
-
+.sidebar-btn {
+  width: 100%;
+  height: 60px;
+}
 
 .header-form{
-  height: 80px;
+  height: 60px;
   width: calc(100% - 60px);
   font-family: "Indie Flower";
   float: right;
@@ -45,14 +44,7 @@
   border-bottom: solid black 2px;
 }
 .header-form.active{
-  height: 80px;
   width: calc(100% - 250px);
-  font-family: "Indie Flower";
-  float: right;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid black 2px;
 }
 #main-header{
   font-size: 2rem;
@@ -87,7 +79,7 @@
 
 .list-body {
   overflow-y:scroll;
-  height: calc(100% - 82px);
+  height: calc(100% - 62px);
   width: calc(100% - 250px);
   float: right;
 }
@@ -110,17 +102,7 @@
   border-bottom: solid black 1px;
 }
 .task.active {
-  float: right;
   width: calc(100% - 250px);
-  height: 60px;
-  display: flex;
-  align-items: center;
-  font-family: "Indie Flower";
-  font-size: 1.2rem;
-  font-weight: bold;
-  justify-content: space-evenly;
-  margin-top: 5px;
-  border-bottom: solid black 1px;
 }
 .task-form {
   align-self: center;
