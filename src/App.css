@@ -31,10 +31,15 @@
 .sidebar-btn {
   width: 100%;
   height: 60px;
+  background-color:transparent;
+}
+.sidebar-btn.active{
+  width: 25%;
+  float: right;
 }
 
 .header-form{
-  height: 60px;
+  height: 58px;
   width: calc(100% - 60px);
   font-family: "Indie Flower";
   float: right;
