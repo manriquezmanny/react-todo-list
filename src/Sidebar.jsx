@@ -14,7 +14,16 @@ function Sidebar(props) {
 
     return (
         <div className={toggleState ? "sidebar active" : "sidebar"}>
-            <button onClick={toggleSideBar} className={toggleState ? "sidebar-btn active": "sidebar-btn"}><i className='bx bx-menu bx-md'></i></button>
+            {toggleState ?
+                <div className="sidebar-header active">
+                    <button onClick={toggleSideBar} className={"sidebar-btn active"}><img src="../public/listLeap.png" className="logo"></img></button>
+                    <h1 className="app-name">ListLeap</h1>
+                </div>
+                : 
+                <div className="sidebar-header">
+                    <button onClick={toggleSideBar} className={"sidebar-btn"}><img src="../public/listLeap.png" className="logo"></img></button>
+                </div>
+            }
         </div>
     )
 }

@@ -21,7 +21,7 @@ function Header(props) {
     return (
         <>
             <form onSubmit={handleSubmit} className={ props.toggleState ? "header-form active": "header-form"}>
-                <h2 id="main-header">TO DO LIST</h2>
+                <h2 id="main-header">Current List</h2>
                 <div className="header-right">
                     <label className="input-label">To Do:
                         <input id="input-field" onChange={handleChange} ref={addInput} type="text" name="objective"/>

@@ -22,20 +22,41 @@
   left: 0;
   bottom:0;
   right: 0;
-  background-color: lightgray;
+  background-color:#bfb29e;
 }
 .sidebar.active {
   width: 250px;
 }
-
-.sidebar-btn {
-  width: 100%;
+.sidebar-header{
   height: 60px;
-  background-color:transparent;
+  width: 100%;
+}
+.logo{
+  width: 60px;
+  height: 60px;
+}
+.sidebar-header.active{
+  display: flex;
+  height: 60px;
+  width: 100%;
+}
+.sidebar-btn {
+  width: 60px;
+  height: 60px;
+  border:none;
+  padding:0 !important;
 }
 .sidebar-btn.active{
-  width: 25%;
+  width: 60px;
   float: right;
+  border: 0px;
+}
+.app-name{
+  width: 120px;
+  text-align:center;
+  font-family:"Indie Flower";
+  font-weight:bold;
+  align-self:center;
 }
 
 .header-form{
@@ -172,6 +193,6 @@
 .objective-text::-webkit-scrollbar {
   display: none;
 }
-.objective-text, .add-task-btn, .edit-btn, .save-btn, .delete-btn:hover {
+.objective-text, button {
   cursor: pointer;
 }
