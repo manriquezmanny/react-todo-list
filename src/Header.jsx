@@ -3,13 +3,16 @@ import { useState, useRef } from "react";
 function Header(props) {
   const [task, setTask] = useState();
 
+  // Ref used to reset value after submission.
   const addInput = useRef(null);
 
+  // Updates task state on input change.
   const handleChange = (e) => {
     const newTask = e.target.value;
     setTask(newTask);
   };
 
+  // Passes state up to parent component with callback function and resets input value.
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit(task);

@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 function Sidebar(props) {
   const [toggleState, setToggleState] = useState(props.toggleState);
 
+  // Updates the toggleState bool value.
   function toggleSideBar() {
     setToggleState(!toggleState);
   }
 
+  // Sends toggleState up to parent component using callback function.
   useEffect(() => {
     props.sendToggleState(toggleState);
   }, [toggleState]);

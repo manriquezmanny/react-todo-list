@@ -4,6 +4,7 @@ function Task(props) {
   // State for tasks to edit.
   const [toEdit, setToEdit] = useState(props.taskObj);
 
+  // Updates state of object that will be used to edit data.
   const handleChange = (e) => {
     const editInputValue = e.target.value;
     setToEdit((prev) => {
@@ -11,6 +12,7 @@ function Task(props) {
     });
   };
 
+  // Passes object that will be used to edit up to parent component and resets form.
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

@@ -53,6 +53,7 @@ function App() {
     setTasks([...tasks, newTaskObject]);
   };
 
+  // Updates state to mark a task as completed or not.
   const toggleComplete = (id) => {
     setTasks((prevTasks) =>
       prevTasks.map((current) => {
@@ -63,6 +64,7 @@ function App() {
     );
   };
 
+  // Gets the sidebar toggle state from child component.
   const getToggleState = (state) => {
     setSidebarToggled(state);
   };
