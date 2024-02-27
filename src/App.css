@@ -65,6 +65,49 @@
   border: 1px black solid;
   border-radius: 5px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list-object {
+  width: 80%;
+  height: 58px;
+  border: gray 1px solid;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  border-color: #b1936c;
+}
+.list-object-text-div {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 50%;
+  height: 100%;
+  font-family: "Indie Flower";
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 20px;
+}
+.list-object-text {
+  margin: 0px !important;
+}
+
+.list-object-buttons-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  width: 50%;
+  height: 100%;
+}
+.list-object-date {
+  margin: 0px !important;
+  color: #b1936c;
+  font-weight: bold;
 }
 
 .login {

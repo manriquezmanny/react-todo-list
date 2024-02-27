@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import List from "./List";
 
 function Sidebar(props) {
   const [toggleState, setToggleState] = useState(props.toggleState);
@@ -30,7 +31,13 @@ function Sidebar(props) {
         </div>
       )}
 
-      {toggleState && <div className="user-lists"></div>}
+      {toggleState && (
+        <div className="user-lists">
+          <List name="Current List" date="01/03/2024"></List>
+          <List name="Other List" date="01/03/2024"></List>
+          <List name="Third List" date="01/03/2024"></List>
+        </div>
+      )}
       {toggleState ? (
         <div className="login active">
           <div className="login active">
