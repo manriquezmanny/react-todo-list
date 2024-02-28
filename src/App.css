@@ -68,6 +68,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+}
+.user-lists::-webkit-scrollbar {
+  display: none;
 }
 .list-object {
   width: 80%;
