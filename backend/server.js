@@ -8,7 +8,7 @@ const dotenv = require("dotenv").config({
 });
 
 // Getting db password
-const mongo_url = process.env.MONGO_URL;
+const mongo_url = process.env.MONGO_URL; // Rotated.
 
 const port = process.env.PORT || 5000;
 
